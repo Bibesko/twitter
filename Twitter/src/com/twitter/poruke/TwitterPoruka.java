@@ -50,7 +50,7 @@ public class TwitterPoruka {
 	/**
 	 * Metoda postavlja vrednost poruke na zadatu vrednost iz parametra.
 	 * @param poruka nova poruka.
-	 * @throws java.lang.RuntimeException ako je unet prazan string 
+	 * @throws java.lang.RuntimeException ako poruka ima vise od 140 karaktera
 	 * ili null vrednost.
 	 */
 	public void setPoruka(String poruka) {
@@ -61,12 +61,11 @@ public class TwitterPoruka {
 	}
 
 	/**
-	 * Metoda vraca vrednosti za korisnika vreme i poruku i
+	 * Metoda vraca vrednosti za korisnika i poruku i
 	 * odgovarajuci tekst uz njih.
 	 */
 	public String toString() {
-		return "KORISNIK:" + korisnik + " VREME:" + vreme.getTime()
-				+ " PORUKA:" + poruka;
+		return "KORISNIK:" + korisnik + " PORUKA:" + poruka;
 	}
 
 }
