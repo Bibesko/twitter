@@ -3,39 +3,68 @@ package com.twitter;
 import java.util.LinkedList;
 import com.twitter.poruke.TwitterPoruka;
 
+/**
+ * Prikazuje sve poruke sa twittera.
+ * 
+ * @author bibesko
+ * @version v1.0
+ * 
+ */
 public class Twitter {
 	
+	/**
+	 * Lista objekata TwitterPoruka.
+	 */
 	private LinkedList<TwitterPoruka> poruke = new LinkedList<TwitterPoruka>();
 
+	/**
+	 * Metoda vraca listu poruke.
+	 * 
+	 * @return vraca listu poruke.
+	 * 
+	 */
 	public LinkedList<TwitterPoruka> vratiSvePoruke() {
 		return poruke;
 	}
 
-	public void unesi(String korisnik, String poruka) {
-		// Pravi se nova poruka i puni podacima.
+	/**
+	 * Metoda kreira jednog korisnika unosi njegove podatke 
+	 * i tog korisnika dodaje na kraj liste poruke.
+	 * 
+	 * @param korisnik nickname korisnika kao string.
+	 * @param poruka poruka kao string.
+	 * 
+	 */
+	public void unesi(String korisnik, String poruka) {		
 		TwitterPoruka tp = new TwitterPoruka();
 		tp.setKorisnik("korisnik");
 		tp.setPoruka(poruka);
-		// Poruka se unosi u listu na kraj
 		poruke.addLast(tp);
 	}
 
+	/**
+	 * <ul> 
+	 * Metoda vraca niz poruka koje sadrze tag koji je dat 
+	 * u parametru i vraca onoliko poruka koliko se unese kao maxBroj.
+	 * </ul>
+	 * 
+	 * @param maxBroj maximalan broj poruka koji moze biti unet u novi niz.
+	 * @param tag string koji treba da sadrzi poruka.
+	 * @return niz poruka sa tagom.
+	 * 
+	 */
 	public TwitterPoruka[] vratiPoruke(int maxBroj, String tag) {
 
 		if (tag == null || tag.isEmpty())
 			throw new RuntimeException("Morate uneti tag");
-		// Ako je maxBroj <=0, vraca maxBroj se postavlja na 100 poruka
+
 		if (maxBroj <= 0)
 			maxBroj = 100;
-		// Pomocna promenljiva koja predstavlja brojac upisanih poruka
+
 		int brojac = 0;
-		// Pomocni niz koja predstavlja rezultat pretrage tj. sadrzace
-		// sve poruke koje u sebi imaju zadati tag
+
 		TwitterPoruka[] rezultat = new TwitterPoruka[maxBroj];
-		// Pretrazuju se poruke i traze se one koje sadrze tag.
-		// Ako se nadje neka takva, i ako nije prekoracen maxBroj
-		// ona se upisuje u niz. Ako je prekoracen maxBroj,pretraga
-		// se prekida.
+
 		for (int i = 0; i < poruke.size(); i++)
 			if (poruke.get(i).getPoruka().indexOf(tag) != -1)
 				if (brojac < maxBroj) {

@@ -21,7 +21,9 @@ public class TwitterPoruka {
 
 	/**
 	 * Metoda vraca nickname korisnika tj. vrednost atributa korisnik.
+	 * 
 	 * @return nickname korisnika kao string.
+	 * 
 	 */
 	public String getKorisnik() {
 		return korisnik;
@@ -29,9 +31,11 @@ public class TwitterPoruka {
 
 	/**
 	 * Metoda postavlja nickname korisnika na zadatu vrednost.
+	 * 
 	 * @param novi nickname korisnika.
 	 * @throws java.lang.RuntimeException ako je unet 
 	 * prazan string ili null vrednost.
+	 * 
 	 */
 	public void setKorisnik(String korisnik) {
 		if (korisnik == null || korisnik.equals(""))
@@ -41,7 +45,9 @@ public class TwitterPoruka {
 
 	/**
 	 * Metoda vraca proruku to jest vrednost atributa poruka.
+	 * 
 	 * @return poruka kao string.
+	 * 
 	 */
 	public String getPoruka() {
 		return poruka;
@@ -49,9 +55,11 @@ public class TwitterPoruka {
 
 	/**
 	 * Metoda postavlja vrednost poruke na zadatu vrednost iz parametra.
+	 * 
 	 * @param poruka nova poruka.
 	 * @throws java.lang.RuntimeException ako poruka ima vise od 140 karaktera
 	 * ili null vrednost.
+	 * 
 	 */
 	public void setPoruka(String poruka) {
 		if (poruka == null || poruka.length() > 140)
@@ -63,6 +71,7 @@ public class TwitterPoruka {
 	/**
 	 * Metoda vraca vrednosti za korisnika i poruku i
 	 * odgovarajuci tekst uz njih.
+	 * 
 	 */
 	public String toString() {
 		return "KORISNIK:" + korisnik + " PORUKA:" + poruka;
