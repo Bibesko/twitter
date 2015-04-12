@@ -52,31 +52,14 @@ public class TwitterTest {
 	 * Test method for {@link com.twitter.Twitter#unesi(java.lang.String, java.lang.String)}.
 	 */
 	@Test
-	public void testUnesiKorisnik() {
+	public void testUnesiKorisnikPorukaPrazan() {
 		t.unesi("Mika", "Prva poruka.");
+		t.unesi("Mika", "Druga poruka.");
 				
 		assertEquals("Mika", t.vratiSvePoruke().getLast().getKorisnik());
-	}
-	
-	/**
-	 * Test method for {@link com.twitter.Twitter#unesi(java.lang.String, java.lang.String)}.
-	 */
-	@Test
-	public void testUnesiPoruka() {
-		t.unesi("Mika", "Prva poruka.");
-				
-		assertEquals("Prva poruka.", t.vratiSvePoruke().getLast().getPoruka());
-	}
-		
-
-	/**
-	 * Test method for {@link com.twitter.Twitter#unesi(java.lang.String, java.lang.String)}.
-	 */
-	@Test
-	public void testUnesiPrazna() {
-		t.unesi("Mika", "Prva poruka.");
-				
 		assertEquals(false, t.vratiSvePoruke().isEmpty());
+		assertEquals("Prva poruka.", t.vratiSvePoruke().getFirst().getPoruka());
+		assertEquals(2, t.vratiSvePoruke().size());
 	}
 	
 
@@ -119,5 +102,35 @@ public class TwitterTest {
 								
 		assertEquals("Poruka poruka poruka.", t.vratiPoruke(1, "Poruka")[0].getPoruka());		
 	}
-
+	
+	/**
+	 * Test method for {@link com.twitter.Twitter#vratiPoruke(int, java.lang.String)}.
+	 */
+	@Test
+	public void testVratiPorukePorukaVisePorukaSaTagom() {
+		t.unesi("Zika", "Poruka poruka poruka.");
+		t.unesi("Zika", "Poruka poruka poruka.");
+		t.unesi("Zika", "message");
+		
+		for (int i = 0; i < 2; i++){	
+		assertEquals("Poruka poruka poruka.", t.vratiPoruke(3, "Poruka")[0].getPoruka());
+		}
+	}
+	
+	/**
+	 * Test method for {@link com.twitter.Twitter#vratiPoruke(int, java.lang.String)}.
+	 */
+	@Test
+	public void testVratiPorukePorukaVisePorukaBezTaga() {
+		t.unesi("Zika", "Poruka poruka poruka.");
+		t.unesi("Zika", "Poruka poruka poruka.");
+		t.unesi("Zika", "message");
+		
+		for (int i = 0; i < 2; i++){	
+		assertEquals(true, t.vratiPoruke(2, "Greska")[i] == null);
+		}
+	}
+	
+	
+	
 }

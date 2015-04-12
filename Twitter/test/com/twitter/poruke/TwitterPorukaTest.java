@@ -98,22 +98,4 @@ public class TwitterPorukaTest {
 		assertEquals("KORISNIK:Korisnik PORUKA:Poruka", tp.toString());
 	}
 	
-	/**
-	 * Test method for {@link com.twitter.poruke.TwitterPoruka#toString()}.
-	 */
-	@Test (expected = java.lang.RuntimeException.class)
-	public void testToStringNull() {		
-		tp.setPoruka(null);
-		tp.setKorisnik(null);
-	}
-
-	/**
-	 * Test method for {@link com.twitter.poruke.TwitterPoruka#toString()}.
-	 */
-	@Test (expected = java.lang.RuntimeException.class)
-	public void testToStringPrazanString() {		
-		tp.setPoruka("");
-		tp.setKorisnik("");
-	}
-	
 }
